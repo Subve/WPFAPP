@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MultiViewApp.View"
         xmlns:viewmodel="clr-namespace:MultiViewApp.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="900">
     <Window.DataContext>
         <viewmodel:MainWindowViewModel/>
     </Window.DataContext>
@@ -38,6 +38,10 @@
             <local:View4/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type viewmodel:View5_ViewModel}">
+            <local:View5/>
+        </DataTemplate>
+
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,6 +55,7 @@
             <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView2}">VIEW 2</Button>
             <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView3}">VIEW 3</Button>
             <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView4}">VIEW 4</Button>
+            <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView5}">VIEW 5</Button>
         </StackPanel>
         
         <!-- Widnow content: ContentControl with separete ViewModels -->

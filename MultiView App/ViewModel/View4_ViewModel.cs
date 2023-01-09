@@ -18,7 +18,7 @@ namespace MultiViewApp.ViewModel
     {
         #region Fields
         private LedDisplayModel _disp;
-        private IoTServer _server;
+        private IoTServerLeds _server;
         #endregion Fields
 
         #region Properties
@@ -39,7 +39,7 @@ namespace MultiViewApp.ViewModel
         {
             /* MODELS */
             _disp = new LedDisplayModel();
-            _server = new IoTServer("localhost");
+            _server = new IoTServerLeds("localhost");
 
             /* VIEWMODELS */
             Preview = new LedViewModel();
