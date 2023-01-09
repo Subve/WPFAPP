@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:MultiViewApp"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="LedBackground">#ffb3b3b3</SolidColorBrush>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

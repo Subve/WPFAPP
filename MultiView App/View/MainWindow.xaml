@@ -10,6 +10,7 @@
     <Window.DataContext>
         <viewmodel:MainWindowViewModel/>
     </Window.DataContext>
+    
     <Window.Resources>
         <SolidColorBrush x:Key="MenuColor" Color="#7386d5" />
         
@@ -33,6 +34,10 @@
             <local:View3/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type viewmodel:View4_ViewModel}">
+            <local:View4/>
+        </DataTemplate>
+
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -45,6 +50,7 @@
             <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView1}">VIEW 1</Button>
             <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView2}">VIEW 2</Button>
             <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView3}">VIEW 3</Button>
+            <Button Style="{StaticResource MenuButton}" Command="{Binding MenuCommandView4}">VIEW 4</Button>
         </StackPanel>
         
         <!-- Widnow content: ContentControl with separete ViewModels -->
