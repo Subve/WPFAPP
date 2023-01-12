@@ -452,9 +452,9 @@ namespace MultiViewApp.Model
             jsonText += "{\"Name\":\"Roll\",\"Data\":" + roll.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
             jsonText += "{\"Name\":\"Pitch\",\"Data\":" + pitch.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
             jsonText += "{\"Name\":\"Yaw\",\"Data\":" + yaw.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
-            jsonText += "{\"Name\":\"counter_mid\",\"Data\":" + mid_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
-            jsonText += "{\"Name\":\"counter_x\",\"Data\":" + x_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
-            jsonText += "{\"Name\":\"counter_y\",\"Data\":" + y_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"}";
+            jsonText += "{\"Name\":\"Counter_mid\",\"Data\":" + mid_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
+            jsonText += "{\"Name\":\"Counter_x\",\"Data\":" + x_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
+            jsonText += "{\"Name\":\"Counter_y\",\"Data\":" + y_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"}";
 
             jsonText += "]";
 
