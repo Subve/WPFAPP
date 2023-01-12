@@ -39,7 +39,8 @@ namespace MultiViewApp.ViewModel
         {
             /* MODELS */
             _disp = new LedDisplayModel();
-            _server = new IoTServerLeds("localhost");
+            var newIp = NetworkUtils.GetIPAddress();
+            _server = new IoTServerLeds(newIp);
 
             /* VIEWMODELS */
             Preview = new LedViewModel();

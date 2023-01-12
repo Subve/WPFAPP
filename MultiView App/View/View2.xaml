@@ -21,7 +21,7 @@
                    FontSize="40" FontWeight="DemiBold"/>
 
         <TextBlock x:Name="txt2" Grid.Row="1" 
-                   Text="Hello, World!" 
+                   Text="Ilość wciśnięć" 
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Center"
                    FontSize="{Binding TextSize}"/>

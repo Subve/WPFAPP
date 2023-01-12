@@ -8,6 +8,7 @@
  ******************************************************************************
  */
 
+using MultiViewApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,7 +22,8 @@ namespace MultiViewApp.Model
         private string _ip;
 
         public IoTServerLeds(string ip)
-        {
+        { 
+
             _ip = ip;
         }
 
@@ -35,7 +37,7 @@ namespace MultiViewApp.Model
         }*/
         public string ScriptUrl
         {
-            get => "http://" + "192.168.56.15/LED.php";
+            get => "http://" + _ip +"/LED.php";
         }
 
         /**

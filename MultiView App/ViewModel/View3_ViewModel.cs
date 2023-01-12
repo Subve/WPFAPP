@@ -21,7 +21,8 @@ namespace MultiViewApp.ViewModel
         {
             // Create new collection for measurements data
             Measurements = new ObservableCollection<MeasurementViewModel>();
-            Server = new IoTServer("HTTP", "192.168.56.15");
+            var newIp = NetworkUtils.GetIPAddress();
+            Server = new IoTServer("HTTP", newIp);
             // Bind button with action
             Refresh = new ButtonCommand(RefreshHandler);
         }

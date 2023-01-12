@@ -153,6 +153,7 @@ namespace MultiViewApp.ViewModel
             sampleTime = config.SampleTime;
 
             Server = new IoTServer("HTTP", IpAddress);
+            
         }
 
         /**
@@ -310,7 +311,8 @@ namespace MultiViewApp.ViewModel
 
             config = new ConfigParams(ipAddress, sampleTime);
             Server = new IoTServer("HTTP", IpAddress);
-
+            NetworkUtils.SetIPAddress(this.IpAddress);
+            Console.WriteLine(this.IpAddress);
             if (restartTimer)
                 StartTimer();
         }
