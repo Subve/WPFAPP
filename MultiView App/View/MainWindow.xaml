@@ -12,7 +12,7 @@
     </Window.DataContext>
     
     <Window.Resources>
-        <SolidColorBrush x:Key="MenuColor" Color="#7386d5" />
+        <SolidColorBrush x:Key="MenuColor" Color="Aqua" />
         
         <Style x:Key="MenuButton" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -59,6 +59,6 @@
         </StackPanel>
         
         <!-- Widnow content: ContentControl with separete ViewModels -->
-        <ContentControl Grid.Column="1" Content="{Binding ContentViewModel}"/>
+        <ContentControl Grid.Column="1" Background="Aqua" Content="{Binding ContentViewModel}"/>
     </Grid>
 </Window>

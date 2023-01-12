@@ -60,7 +60,12 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Name="ButtonMatrixGrid" Margin="20"/>
+        <Grid Grid.Row="0" Name="ButtonMatrixGrid" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="23*"/>
+                <ColumnDefinition Width="737*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
 
         <StackPanel  Grid.Row="1" VerticalAlignment="Center" Margin="20,0">
             <DockPanel>
@@ -83,7 +88,7 @@
             </DockPanel>
         </StackPanel>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Background="gold">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1*"/>
