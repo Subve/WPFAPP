@@ -12,7 +12,7 @@
     </Window.DataContext>
     
     <Window.Resources>
-        <SolidColorBrush x:Key="MenuColor" Color="Aqua" />
+        <SolidColorBrush x:Key="MenuColor" Color="#FF6200EE" />
         
         <Style x:Key="MenuButton" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Center" />
