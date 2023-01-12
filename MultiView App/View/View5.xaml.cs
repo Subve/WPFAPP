@@ -23,7 +23,7 @@ namespace MultiViewApp.View
         {
             InitializeComponent();
         }
-        private void MenuBtn_Click(object sender, RoutedEventArgs e)
+        /*private void MenuBtn_Click(object sender, RoutedEventArgs e)
         {
             isMenuVisible = !isMenuVisible;
 
@@ -31,6 +31,6 @@ namespace MultiViewApp.View
                 this.Menu.Visibility = Visibility.Visible;
             else
                 this.Menu.Visibility = Visibility.Collapsed;
-        }
+        }*/
     }
 }

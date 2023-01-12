@@ -58,6 +58,8 @@ namespace MultiViewApp.ViewModel
         }
 
         public PlotModel DataPlotModel { get; set; }
+        public PlotModel DataPlotModelP { get; set; }
+        public PlotModel DataPlotModelH { get; set; }
         public ButtonCommand StartButton { get; set; }
         public ButtonCommand StopButton { get; set; }
         public ButtonCommand UpdateConfigButton { get; set; }
@@ -95,6 +97,52 @@ namespace MultiViewApp.ViewModel
             });
 
             DataPlotModel.Series.Add(new LineSeries() { Title = "temperature data series", Color = OxyColor.Parse("#FFFF0000") });
+            //Pressure
+            DataPlotModelP = new PlotModel { Title = "Pressure data" };
+
+            DataPlotModelP.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Bottom,
+                Minimum = 0,
+                Maximum = config.XAxisMax,
+                Key = "Horizontal",
+                Unit = "sec",
+                Title = "Time"
+            });
+            DataPlotModelP.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Left,
+                Minimum = 260,
+                Maximum = 1260,
+                Key = "Vertical",
+                Unit = "mbar",
+                Title = "Pressure"
+            });
+
+            DataPlotModelP.Series.Add(new LineSeries() { Title = "Pressure data series", Color = OxyColor.Parse("#FFFF0000") });
+            //Humidity
+            DataPlotModelH = new PlotModel { Title = "Humidity data" };
+
+            DataPlotModelH.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Bottom,
+                Minimum = 0,
+                Maximum = config.XAxisMax,
+                Key = "Horizontal",
+                Unit = "sec",
+                Title = "Time"
+            });
+            DataPlotModelH.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Left,
+                Minimum = 0,
+                Maximum = 100,
+                Key = "Vertical",
+                Unit = "%",
+                Title = "Humidity"
+            });
+
+            DataPlotModelH.Series.Add(new LineSeries() { Title = "Humidity data series", Color = OxyColor.Parse("#FFFF0000") });
 
             StartButton = new ButtonCommand(StartTimer);
             StopButton = new ButtonCommand(StopTimer);
@@ -104,7 +152,7 @@ namespace MultiViewApp.ViewModel
             ipAddress = config.IpAddress;
             sampleTime = config.SampleTime;
 
-            Server = new IoTServer("HTTPS", IpAddress);
+            Server = new IoTServer("HTTP", IpAddress);
         }
 
         /**
@@ -128,6 +176,43 @@ namespace MultiViewApp.ViewModel
             }
 
             DataPlotModel.InvalidatePlot(true);
+            
+        }
+        private void UpdatePlotP(double t, double d)
+        {
+            //
+            LineSeries lineSeriesP = DataPlotModelP.Series[0] as LineSeries;
+
+            lineSeriesP.Points.Add(new DataPoint(t, d));
+
+            if (lineSeriesP.Points.Count > config.MaxSampleNumber)
+                lineSeriesP.Points.RemoveAt(0);
+
+            if (t >= config.XAxisMax)
+            {
+                DataPlotModelP.Axes[0].Minimum = (t - config.XAxisMax);
+                DataPlotModelP.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+            }
+
+            DataPlotModelP.InvalidatePlot(true);
+        }
+        private void UpdatePlotH(double t, double d)
+        {
+            //
+            LineSeries lineSeriesH = DataPlotModelH.Series[0] as LineSeries;
+
+            lineSeriesH.Points.Add(new DataPoint(t, d));
+
+            if (lineSeriesH.Points.Count > config.MaxSampleNumber)
+                lineSeriesH.Points.RemoveAt(0);
+
+            if (t >= config.XAxisMax)
+            {
+                DataPlotModelH.Axes[0].Minimum = (t - config.XAxisMax);
+                DataPlotModelH.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+            }
+
+            DataPlotModelH.InvalidatePlot(true);
         }
 
         /**
@@ -157,7 +242,9 @@ namespace MultiViewApp.ViewModel
                 UpdatePlot(timeStamp / 1000.0, (double)resposneJson.data);
 #else
                 ServerData resposneJson = JsonConvert.DeserializeObject<ServerData>(responseText);
-                UpdatePlot(timeStamp / 1000.0, resposneJson.data);
+                UpdatePlot(timeStamp / 1000.0, resposneJson.Temperature);
+                UpdatePlotP(timeStamp / 1000.0, resposneJson.Pressure);
+                UpdatePlotH(timeStamp / 1000.0, resposneJson.Humidity);
 #endif
             }
             catch (Exception e)
@@ -194,6 +281,8 @@ namespace MultiViewApp.ViewModel
                 RequestTimer.Enabled = true;
 
                 DataPlotModel.ResetAllAxes();
+                DataPlotModelP.ResetAllAxes();
+                DataPlotModelH.ResetAllAxes();
             }
         }
 
@@ -220,7 +309,7 @@ namespace MultiViewApp.ViewModel
                 StopTimer();
 
             config = new ConfigParams(ipAddress, sampleTime);
-            Server = new IoTServer("HTTPS", IpAddress);
+            Server = new IoTServer("HTTP", IpAddress);
 
             if (restartTimer)
                 StartTimer();
@@ -239,7 +328,7 @@ namespace MultiViewApp.ViewModel
             config = new ConfigParams();
             IpAddress = config.IpAddress;
             SampleTime = config.SampleTime.ToString();
-            Server = new IoTServer("HTTPS", IpAddress);
+            Server = new IoTServer("HTTP", IpAddress);
 
             if (restartTimer)
                 StartTimer();

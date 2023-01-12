@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -104,9 +106,12 @@ namespace MultiViewApp.Model
         /**
           * @brief obtaining the address of the data file from IoT server IP.
           */
+        //http://192.168.56.15/control.php?task=sensors&pressure=Pa&temperature=C&humidity=Prcnt
         private string GetFileUrl()
         {
-            return protocol + ip + "/file.json";
+            // return protocol + ip + "/file.json";
+            //return protocol + ip + "/control.php?task=sensors&pressure=Pa&temperature=C&humidity=Prcnt";
+            return "http://192.168.56.15/control.php?task=sensors&pressure=Pa&temperature=C&humidity=Prcnt";
         }
 
         /**
@@ -114,7 +119,15 @@ namespace MultiViewApp.Model
          */
         private string GetScriptUrl()
         {
-            return protocol + ip + "/server/resource.php";
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=sensors&pressure=Pa&temperature=C&humidity=Prcnt";
+           // return "http://192.168.56.15/control.php?task=sensors&pressure=Pa&temperature=C&humidity=Prcnt";
+        }
+        private string GetDataUrl()
+        {
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
         }
 
         /**
@@ -128,6 +141,26 @@ namespace MultiViewApp.Model
                 using (HttpClient client = new HttpClient())
                 {
                     responseText = await client.GetStringAsync(GetFileUrl());
+                    
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETDatawithClient()
+        {
+            string responseText = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetDataUrl());
+
                 }
             }
             catch (Exception e)
@@ -197,7 +230,47 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+        public async Task<string> GETDatawithRequest()
+        {
+            string responseText = null;
 
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetDataUrl());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public JArray getMeasurements(double roll,double pitch,double yaw)
+        {
+            string jsonText = "[";
+            /*
+            jsonText += "{\"Name\":\"Temperature\",\"Data\":" + (23.0 + rand.NextDouble()).ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"C\"},";
+            jsonText += "{\"Name\":\"Pressure\",\"Data\":" + (1023.0 + rand.NextDouble()).ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"hPa\"},";
+            jsonText += "{\"Name\":\"Humidity\",\"Data\":" + (43.0 + rand.NextDouble()).ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"%\"},";
+            */
+            jsonText += "{\"Name\":\"Roll\",\"Data\":" + roll.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
+            jsonText += "{\"Name\":\"Pitch\",\"Data\":" + pitch.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
+            jsonText += "{\"Name\":\"Yaw\",\"Data\":" + yaw.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"}";
+            
+            jsonText += "]";
+
+            return JArray.Parse(jsonText);
+        }
         /**
           * @brief HTTP POST request using HttpWebRequest
           */

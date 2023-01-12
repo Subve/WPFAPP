@@ -54,8 +54,8 @@ namespace MultiViewApp.Model
             JArray array = new JArray();
             try
             {
-                array.Add(x);
                 array.Add(y);
+                array.Add(x);
                 array.Add(_model[x, y].R);
                 array.Add(_model[x, y].G);
                 array.Add(_model[x, y].B);

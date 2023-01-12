@@ -29,9 +29,13 @@ namespace MultiViewApp.Model
          * @brief obtaining the address of the PHP script from IoT server IP.
          * @return LED display control script URL
          */
-        public string ScriptUrl
+        /*public string ScriptUrl
         {
             get => "http://" + _ip + "/server/led_display.php";
+        }*/
+        public string ScriptUrl
+        {
+            get => "http://" + "192.168.56.15/LED.php";
         }
 
         /**
