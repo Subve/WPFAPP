@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="lbl1" Grid.Row="0"
-                   Text="VIEW #1"
+                   Text="HOME"
                    VerticalAlignment="Center" 
                    HorizontalAlignment="Left"
                    Margin="15,5"
