@@ -129,6 +129,42 @@ namespace MultiViewApp.Model
             return protocol + ip + "/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
             // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
         }
+        private string GetRightClickUrl()
+        {
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=click&button=right";
+            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+        }
+        private string GetLeftClickUrl()
+        {
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=click&button=left";
+            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+        }
+        private string GetUpClickUrl()
+        {
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=click&button=up";
+            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+        }
+        private string GetDownClickUrl()
+        {
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=click&button=down";
+            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+        }
+        private string GetMidClickUrl()
+        {
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=click&button=mid";
+            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+        }
+        private string GetClicksUrl()
+        {
+            //  return protocol + ip + "/server/resource.php";
+            return protocol + ip + "/control.php?task=joystick";
+            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+        }
 
         /**
           * @brief HTTP GET request using HttpClient
@@ -230,6 +266,156 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+        public async Task<string> GETRightwithRequest()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetRightClickUrl());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETLeftwithRequest()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetLeftClickUrl());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETMidwithRequest()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetMidClickUrl());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETUpwithRequest()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetUpClickUrl());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETDownwithRequest()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetDownClickUrl());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETClickswithRequest()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetClicksUrl());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
         public async Task<string> GETDatawithRequest()
         {
             string responseText = null;
@@ -255,7 +441,7 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-        public JArray getMeasurements(double roll,double pitch,double yaw)
+        public JArray getMeasurements(double roll,double pitch,double yaw,int mid_clicks, int x_clicks, int y_clicks)
         {
             string jsonText = "[";
             /*
@@ -265,8 +451,11 @@ namespace MultiViewApp.Model
             */
             jsonText += "{\"Name\":\"Roll\",\"Data\":" + roll.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
             jsonText += "{\"Name\":\"Pitch\",\"Data\":" + pitch.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
-            jsonText += "{\"Name\":\"Yaw\",\"Data\":" + yaw.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"}";
-            
+            jsonText += "{\"Name\":\"Yaw\",\"Data\":" + yaw.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
+            jsonText += "{\"Name\":\"counter_mid\",\"Data\":" + mid_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
+            jsonText += "{\"Name\":\"counter_x\",\"Data\":" + x_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
+            jsonText += "{\"Name\":\"counter_y\",\"Data\":" + y_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"}";
+
             jsonText += "]";
 
             return JArray.Parse(jsonText);

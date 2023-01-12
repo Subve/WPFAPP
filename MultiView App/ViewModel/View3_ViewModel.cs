@@ -12,6 +12,11 @@ namespace MultiViewApp.ViewModel
     {
         public ObservableCollection<MeasurementViewModel> Measurements { get;  set; }
         public ButtonCommand Refresh { get; set; }
+        public ButtonCommand PressMid { get; set; }
+        public ButtonCommand PressLeft { get; set; }
+        public ButtonCommand PressRight { get; set; }
+        public ButtonCommand PressUp { get; set; }
+        public ButtonCommand PressDown { get; set; }
 
         private ServerIoTmock ServerMock = new ServerIoTmock();
         private IoTServer Server;
@@ -25,13 +30,21 @@ namespace MultiViewApp.ViewModel
             Server = new IoTServer("HTTP", newIp);
             // Bind button with action
             Refresh = new ButtonCommand(RefreshHandler);
+            PressMid = new ButtonCommand(PressedMidHandler);
+            PressLeft = new ButtonCommand(PressedLeftHandler);
+            PressRight = new ButtonCommand(PressedRightHandler);
+            PressUp = new ButtonCommand(PressedUpHandler);
+            PressDown = new ButtonCommand(PressedDownHandler);
         }
         private async void UpdateDataWithServerResponse()
         {
             string responseText = await Server.GETDatawithRequest();
             //var measurementsList = measurementsJsonArray.ToObject<List<MeasurementModel>>();
             ServerDataAngles resposneJson = JsonConvert.DeserializeObject<ServerDataAngles>(responseText);
-            JArray measurementsJsonArray = Server.getMeasurements(resposneJson.Roll,resposneJson.Pitch,resposneJson.Yaw);
+            string clickText=await Server.GETClickswithRequest();
+            ServerClicksCounter responseClicksJson=JsonConvert.DeserializeObject<ServerClicksCounter>(clickText);
+            
+            JArray measurementsJsonArray = Server.getMeasurements(resposneJson.Roll,resposneJson.Pitch,resposneJson.Yaw,responseClicksJson.counter_mid,responseClicksJson.counter_x,responseClicksJson.counter_y);
             var measurementsList = measurementsJsonArray.ToObject<List<MeasurementModel>>();
 
             // Add new elements to collection
@@ -70,6 +83,26 @@ namespace MultiViewApp.ViewModel
                     Measurements[i].UpdateWithModel(measurementsList[i]);
             }
             */
+        }
+        public void PressedMidHandler()
+        {
+            var result = Server.GETMidwithRequest();
+        }
+        public void PressedUpHandler()
+        {
+            var result = Server.GETUpwithRequest();
+        }
+        public void PressedDownHandler()
+        {
+            var result = Server.GETDownwithRequest();
+        }
+        public void PressedLeftHandler()
+        {
+            var result = Server.GETLeftwithRequest();
+        }
+        public void PressedRightHandler()
+        {
+            var result = Server.GETRightwithRequest();
         }
 
         #region PropertyChanged
