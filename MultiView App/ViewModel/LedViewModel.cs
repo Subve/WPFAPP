@@ -1,14 +1,4 @@
-﻿/**
- ******************************************************************************
- * @file    LED Display Control Example/ViewModel/LedViewModel.cs
- * @author  Adrian Wojcik  adrian.wojcik@put.poznan.pl
- * @version V2.0
- * @date    10-May-2021
- * @brief   LED display controller: LED indicator ViewModel
- ******************************************************************************
- */
-
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace MultiViewApp.ViewModel
 {

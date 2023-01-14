@@ -1,14 +1,4 @@
-﻿/**
- ******************************************************************************
- * @file    LED Display Control Example/Model/LedModel.cs
- * @author  Adrian Wojcik  adrian.wojcik@put.poznan.pl
- * @version V2.0
- * @date    10-May-2021
- * @brief   LED display controller: LED data model - nullable RGB color format
- ******************************************************************************
- */
-
-namespace MultiViewApp.Model
+﻿namespace MultiViewApp.Model
 {
     public class LedModel
     {

@@ -1,14 +1,4 @@
-﻿/**
- ******************************************************************************
- * @file    LED Display Control Example/ViewModel/MainWindowViewModel.cs
- * @author  Adrian Wojcik  adrian.wojcik@put.poznan.pl
- * @version V2.0
- * @date    10-May-2021
- * @brief   LED display controller: main window ViewModel
- ******************************************************************************
- */
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Data;
 
 namespace MultiViewApp.ViewModel

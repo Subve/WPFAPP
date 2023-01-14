@@ -1,14 +1,4 @@
-﻿/**
- ******************************************************************************
- * @file    LED Display Control Example/Model/IoTServer.cs
- * @author  Adrian Wojcik  adrian.wojcik@put.poznan.pl
- * @version V1.0
- * @date    07-May-2021
- * @brief   LED display controller: IoT server model
- ******************************************************************************
- */
-
-using MultiViewApp.ViewModel;
+﻿using MultiViewApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

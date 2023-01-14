@@ -1,14 +1,4 @@
-﻿/**
- ******************************************************************************
- * @file    LED Display Control Example/Model/LedDisplayModel.cs
- * @author  Adrian Wojcik  adrian.wojcik@put.poznan.pl
- * @version V2.0
- * @date    10-May-2021
- * @brief   LED display controller: LED display data model - matrix of LEDs
- ******************************************************************************
- */
-
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Json;

@@ -1,14 +1,4 @@
-﻿/**
- ******************************************************************************
- * @file    LED Display Control Example/ViewModel/SliderViewModel.cs
- * @author  Adrian Wojcik  adrian.wojcik@put.poznan.pl
- * @version V2.0
- * @date    10-May-2021
- * @brief   LED display controller: color sliders ViewModel
- ******************************************************************************
- */
-
-namespace MultiViewApp.ViewModel
+﻿namespace MultiViewApp.ViewModel
 {
     public class SliderViewModel : BaseViewModel
     {
