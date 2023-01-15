@@ -2,7 +2,7 @@
 using System;
 using System.Globalization;
 
-namespace MultiViewApp.Model
+namespace AirApp.Model
 {
     public class ServerIoTmock
     {

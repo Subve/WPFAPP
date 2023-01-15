@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     using Model;
 

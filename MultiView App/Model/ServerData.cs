@@ -1,4 +1,4 @@
-﻿namespace MultiViewApp.Model
+﻿namespace AirApp.Model
 {
     /**
      * @brief Simple parseable data model for IoT server response

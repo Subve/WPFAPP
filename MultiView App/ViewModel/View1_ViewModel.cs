@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     public class View1_ViewModel : BaseViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace MultiViewApp.ViewModel
+﻿namespace AirApp.ViewModel
 {
     public class SliderViewModel : BaseViewModel
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     public class ButtonCommand : ICommand
     {

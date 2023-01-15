@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MultiViewApp.Model
+namespace AirApp.Model
 {
     class ServerDataAngles
     {

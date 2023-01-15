@@ -12,7 +12,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiViewApp.Model
+namespace AirApp.Model
 {
     public class IoTServer
     {

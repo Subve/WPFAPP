@@ -1,9 +1,9 @@
-﻿using MultiViewApp.ViewModel;
+﻿using AirApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MultiViewApp.Model
+namespace AirApp.Model
 {
     public static class NetworkUtils
     {

@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MultiViewApp.View
+namespace AirApp.View
 {
     /// <summary>
     /// Interaction logic for View5.xaml

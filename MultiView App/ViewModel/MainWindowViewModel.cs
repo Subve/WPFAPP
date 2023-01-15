@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     public class MainWindowViewModel : BaseViewModel
     {

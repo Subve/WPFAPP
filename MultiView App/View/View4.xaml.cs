@@ -1,4 +1,4 @@
-﻿using MultiViewApp.ViewModel;
+﻿using AirApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MultiViewApp.View
+namespace AirApp.View
 {
     /// <summary>
     /// Interaction logic for View4.xaml

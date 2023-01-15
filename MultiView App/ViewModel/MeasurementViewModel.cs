@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     using Model;
 

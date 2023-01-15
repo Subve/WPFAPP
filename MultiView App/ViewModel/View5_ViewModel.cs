@@ -11,7 +11,7 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using Newtonsoft.Json;
 
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     using Model;
 

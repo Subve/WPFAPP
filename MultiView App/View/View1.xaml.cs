@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace MultiViewApp.View
+namespace AirApp.View
 {
     using ViewModel;
     /// <summary>

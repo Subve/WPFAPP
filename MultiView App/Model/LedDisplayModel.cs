@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace MultiViewApp.Model
+namespace AirApp.Model
 {
     public class LedDisplayModel
     {

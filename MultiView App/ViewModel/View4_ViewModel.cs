@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Data;
 
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     using Model;
     public class View4_ViewModel : BaseViewModel

@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Newtonsoft.Json.Linq;
-namespace MultiViewApp.ViewModel
+namespace AirApp.ViewModel
 {
     using Model;
     using Newtonsoft.Json;

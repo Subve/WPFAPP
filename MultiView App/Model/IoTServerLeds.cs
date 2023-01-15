@@ -1,11 +1,11 @@
-﻿using MultiViewApp.ViewModel;
+﻿using AirApp.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MultiViewApp.Model
+namespace AirApp.Model
 {
     public class IoTServerLeds
     {
