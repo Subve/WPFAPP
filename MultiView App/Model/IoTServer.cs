@@ -291,6 +291,101 @@ namespace AirApp.Model
 
             return responseText;
         }
+        public async Task<string> GETRightwithClient()
+        {
+            string responseText = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetRightClickUrl());
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETLeftwithClient()
+        {
+            string responseText = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetLeftClickUrl());
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETMidwithClient()
+        {
+            string responseText = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetMidClickUrl());
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETUpwithClient()
+        {
+            string responseText = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetUpClickUrl());
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        public async Task<string> GETDownwithClient()
+        {
+            string responseText = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetDownClickUrl());
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
         public async Task<string> GETLeftwithRequest()
         {
             string responseText = null;
@@ -416,6 +511,25 @@ namespace AirApp.Model
 
             return responseText;
         }
+        public async Task<string> GETClickswithClient()
+        {
+            string responseText = null;
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetClicksUrl());
+
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
         public async Task<string> GETDatawithRequest()
         {
             string responseText = null;
@@ -441,7 +555,7 @@ namespace AirApp.Model
 
             return responseText;
         }
-        public JArray getMeasurements(double roll,double pitch,double yaw,int mid_clicks, int x_clicks, int y_clicks)
+        public JArray getMeasurements(double pressure,double temperature, double humidity,double roll,double pitch,double yaw,int mid_clicks, int x_clicks, int y_clicks)
         {
             string jsonText = "[";
             /*
@@ -452,10 +566,13 @@ namespace AirApp.Model
             jsonText += "{\"Name\":\"Roll\",\"Data\":" + roll.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
             jsonText += "{\"Name\":\"Pitch\",\"Data\":" + pitch.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
             jsonText += "{\"Name\":\"Yaw\",\"Data\":" + yaw.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
+            jsonText += "{\"Name\":\"Pressure\",\"Data\":" + pressure.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"hPa\"},";
+            jsonText += "{\"Name\":\"Temperature\",\"Data\":" + temperature.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"C\"},";
+            jsonText += "{\"Name\":\"Humidity\",\"Data\":" + humidity.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"%\"},";
             jsonText += "{\"Name\":\"Counter_mid\",\"Data\":" + mid_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
             jsonText += "{\"Name\":\"Counter_x\",\"Data\":" + x_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"},";
             jsonText += "{\"Name\":\"Counter_y\",\"Data\":" + y_clicks.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Clicks\"}";
-
+            
             jsonText += "]";
 
             return JArray.Parse(jsonText);

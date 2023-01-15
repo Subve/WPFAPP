@@ -312,6 +312,7 @@ namespace AirApp.ViewModel
             config = new ConfigParams(ipAddress, sampleTime);
             Server = new IoTServer("HTTP", IpAddress);
             NetworkUtils.SetIPAddress(this.IpAddress);
+            NetworkUtils.SetSampleTime(this.sampleTime);
             Console.WriteLine(this.IpAddress);
             if (restartTimer)
                 StartTimer();

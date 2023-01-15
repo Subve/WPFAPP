@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 using System.Windows.Input;
 
 namespace AirApp.ViewModel
@@ -8,6 +9,7 @@ namespace AirApp.ViewModel
         /// Delegate command to register method to be executed
         private readonly Action handler;
         private bool isEnabled;
+        private Action<object, ElapsedEventArgs> refreshHandler;
 
         /// Bind method to be executed to the handler
         /// So that it can direct on event execution
@@ -19,6 +21,7 @@ namespace AirApp.ViewModel
             // By default the button is enabled
             this.isEnabled = true;
         }
+
 
         public bool IsEnabled
         {
