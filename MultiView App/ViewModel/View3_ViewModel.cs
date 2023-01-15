@@ -20,7 +20,7 @@ namespace AirApp.ViewModel
         public ButtonCommand PressUp { get; set; }
         public ButtonCommand PressDown { get; set; }
         private bool isTimerRunning = false;
-        private ServerIoTmock ServerMock = new ServerIoTmock();
+        
         private IoTServer Server;
         private string ipAddress;
         public Timer timer;
@@ -33,7 +33,6 @@ namespace AirApp.ViewModel
             var newIp = NetworkUtils.GetIPAddress();
             Server = new IoTServer("HTTP", newIp);
             // Bind button with action
-            //Refresh = new ButtonCommand(RefreshHandler);
             PressMid = new ButtonCommand(PressedMidHandler);
             PressLeft = new ButtonCommand(PressedLeftHandler);
             PressRight = new ButtonCommand(PressedRightHandler);
@@ -71,30 +70,6 @@ namespace AirApp.ViewModel
                 }
             });
         }
-        /*public void RefreshHandler()
-        {
-
-            // Read data from server in JSON array format
-            // TODO: replace mock with network comunnication
-            JArray measurementsJsonArray = ServerMock.getMeasurements();
-            UpdateDataWithServerResponse();
-            // Convert generic JSON array container to list of specific type
-            /*var measurementsList = measurementsJsonArray.ToObject<List<MeasurementModel>>();
-            
-            // Add new elements to collection
-            if (Measurements.Count < measurementsList.Count)
-            {
-                foreach (var m in measurementsList)
-                    Measurements.Add(new MeasurementViewModel(m));
-            }
-            // Update existing elements in collection
-            else
-            {
-                for (int i = 0; i < Measurements.Count; i++)
-                    Measurements[i].UpdateWithModel(measurementsList[i]);
-            }
-            
-        }*/
         private void RefreshHandler()
         {
             if (!isTimerRunning)

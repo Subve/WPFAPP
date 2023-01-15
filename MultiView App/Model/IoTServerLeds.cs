@@ -21,10 +21,7 @@ namespace AirApp.Model
          * @brief obtaining the address of the PHP script from IoT server IP.
          * @return LED display control script URL
          */
-        /*public string ScriptUrl
-        {
-            get => "http://" + _ip + "/server/led_display.php";
-        }*/
+
         public string ScriptUrl
         {
             get => "http://" + _ip +"/LED.php";

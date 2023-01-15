@@ -131,39 +131,29 @@ namespace AirApp.Model
         }
         private string GetRightClickUrl()
         {
-            //  return protocol + ip + "/server/resource.php";
             return protocol + ip + "/control.php?task=click&button=right";
-            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
         }
         private string GetLeftClickUrl()
         {
-            //  return protocol + ip + "/server/resource.php";
+            
             return protocol + ip + "/control.php?task=click&button=left";
-            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
+            
         }
         private string GetUpClickUrl()
         {
-            //  return protocol + ip + "/server/resource.php";
             return protocol + ip + "/control.php?task=click&button=up";
-            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
         }
         private string GetDownClickUrl()
         {
-            //  return protocol + ip + "/server/resource.php";
             return protocol + ip + "/control.php?task=click&button=down";
-            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
         }
         private string GetMidClickUrl()
         {
-            //  return protocol + ip + "/server/resource.php";
             return protocol + ip + "/control.php?task=click&button=mid";
-            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
         }
         private string GetClicksUrl()
         {
-            //  return protocol + ip + "/server/resource.php";
             return protocol + ip + "/control.php?task=joystick";
-            // return "http://192.168.56.15/control.php?task=angles&roll=1&pitch=1&yaw=1&unit=deg";
         }
 
         /**
@@ -558,11 +548,7 @@ namespace AirApp.Model
         public JArray getMeasurements(double pressure,double temperature, double humidity,double roll,double pitch,double yaw,int mid_clicks, int x_clicks, int y_clicks)
         {
             string jsonText = "[";
-            /*
-            jsonText += "{\"Name\":\"Temperature\",\"Data\":" + (23.0 + rand.NextDouble()).ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"C\"},";
-            jsonText += "{\"Name\":\"Pressure\",\"Data\":" + (1023.0 + rand.NextDouble()).ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"hPa\"},";
-            jsonText += "{\"Name\":\"Humidity\",\"Data\":" + (43.0 + rand.NextDouble()).ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"%\"},";
-            */
+ 
             jsonText += "{\"Name\":\"Roll\",\"Data\":" + roll.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
             jsonText += "{\"Name\":\"Pitch\",\"Data\":" + pitch.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
             jsonText += "{\"Name\":\"Yaw\",\"Data\":" + yaw.ToString(CultureInfo.InvariantCulture) + ",\"Unit\":\"Deg\"},";
