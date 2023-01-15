@@ -39,7 +39,7 @@ namespace AirApp.ViewModel
             PressRight = new ButtonCommand(PressedRightHandler);
             PressUp = new ButtonCommand(PressedUpHandler);
             PressDown = new ButtonCommand(PressedDownHandler);
-            timer.Interval = 1000;
+            timer.Interval = NetworkUtils.GetSampleTime();
             timer.Elapsed += RefreshHandler;
             timer.Start();
             Refresh = new ButtonCommand(RefreshHandler);
