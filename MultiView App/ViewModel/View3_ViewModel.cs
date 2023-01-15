@@ -48,7 +48,6 @@ namespace AirApp.ViewModel
         {
             string responseTextT = await Server.GETwithClient();
             string responseText = await Server.GETDatawithRequest();
-            //var measurementsList = measurementsJsonArray.ToObject<List<MeasurementModel>>();
             ServerDataAngles resposneJson = JsonConvert.DeserializeObject<ServerDataAngles>(responseText);
             ServerData resposneJsonT = JsonConvert.DeserializeObject<ServerData>(responseTextT);
             string clickText=await Server.GETClickswithRequest();
